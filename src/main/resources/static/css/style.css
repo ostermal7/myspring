@@ -1,0 +1,315 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+/* Основные компоненты*/
+
+body{
+    background-color: rgb(92, 179, 179);
+    display: flex;
+    justify-content: space-between;
+    min-height: 100vh;
+    align-items: baseline;
+    padding: 1rem 2rem;
+
+}
+.main-heading{
+    color: white;
+    border-radius: 2rem;
+    text-align: center;
+    border: 3px solid rgb(252, 252, 252);
+    padding: .5rem 1rem;
+    margin-bottom: 2rem;
+}
+a{
+    font-size: 1rem;
+    color: white;
+}
+.title-links{
+    position: relative;
+    text-decoration: none;
+    border-radius: 3rem;
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    background-color: unset
+}
+
+
+/*Центральная панель*/
+.main{
+    margin-top: 1rem;
+    flex-grow: 5;
+    flex-basis: 0;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+/*Левая боковая панель*/
+.navigation{
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-top: 5rem;
+    margin-left: 1rem;
+    align-self: flex-start;
+}
+.navigation-item{
+    text-decoration: none;
+    font-size: 1.2rem;
+    background-color: unset;
+    border-radius: 3rem;
+    color: rgb(245, 248, 248);
+    margin-left: .5rem;
+}
+
+/*Правая боковая панель*/
+.logout{
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+/*Student list*/
+.heading-secondary{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+.student-buttons{
+    display: flex;
+}
+
+.butt{
+    display: flex;
+    flex-direction: column;
+}
+/*Создание таблиц*/
+table{
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-spacing: 0;
+}
+.student-table{
+    width: 100%;
+}
+th,td{
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: rgb(92, 179, 179);
+    font-size: 1.3rem;
+    padding: 0.4rem;
+}
+th:first-child {
+    border-top-left-radius: 10px;
+}
+th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+}
+tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+tr td:last-child {
+    border-right: none;
+}
+
+TH{
+    background: #457567;
+
+}
+TD{
+    background: rgb(201, 223, 220);
+}
+
+/*disciplines*/
+.disc-buttons{
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+
+}
+.colored{
+    width: 90%;
+    text-decoration: none;
+    display: inline-block;
+    color: rgb(124, 122, 122);
+    padding: 20px 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #f1f7f6 0%, #48e7ec 51%, #ffffff 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    transition: .5s;
+}
+.colored:hover{
+    background-position: right center;
+}
+.disc-container{
+    display: flex;
+    justify-content: center;
+    padding: 5rem 10rem;
+}
+.table-font{
+    font-size: 2rem;
+}
+.discipline-table{
+    border-radius: 1rem;
+}
+.discipline-creation-window input{
+    border-radius: 5px;
+}
+.discipline-creation-window label{
+    color: white;
+}
+/*Students' modification*/
+.sername-window{
+    margin-left: 3.75rem;
+    padding-bottom: 1.5rem;
+    color: white;
+}
+.sername-window input{
+    border-radius: 5px;
+}
+.name-window{
+    margin-left: 5.85rem;
+    padding-bottom: 1.5rem;
+    color: white;
+}
+.name-window input{
+    border-radius: 5px;
+}
+.group-window{
+    margin-left: 4.63rem;
+    padding-bottom: 1.5rem;
+    color: white;
+}
+.group-window input{
+    border-radius: 5px;
+}
+.date-window{
+    color: white;
+}
+.date-window input{
+    border-radius: 5px;
+}
+.send-button{
+    margin-top: 2rem;
+    margin-left: 5rem;
+    display: inline-block; /* Строчно-блочный элемент */
+    background: #ffffff; /* Серый цвет фона */
+    color: rgb(68, 116, 108); /* Белый цвет текста */
+    padding: 0.5rem 2rem; /* Поля вокруг текста */
+    text-decoration: none; /* Убираем подчёркивание */
+    border-radius: 3px; /* Скругляем уголки */
+}
+/*student progress*/
+.current-student{
+    width: 100%;
+    margin-bottom: 4rem;
+}
+.modif-btn{
+
+    display: inline-block; /* Строчно-блочный элемент */
+    background: #ffffff; /* Серый цвет фона */
+    color: rgb(68, 116, 108); /* Белый цвет текста */
+    padding: 0.5rem 2rem; /* Поля вокруг текста */
+    text-decoration: none; /* Убираем подчёркивание */
+    border-radius: 3px; /* Скругляем уголки */
+}
+
+#choose-sem{
+    width: 10rem;
+    height: 2.3rem;
+    border-radius: 10px;
+    color: rgb(68, 116, 108);
+}
+.cursa{
+    color: white;
+}
+/*discipline creation*/
+.discipline-creation-window{
+    margin-top: 2rem;
+}
+.sem-selection-table{
+    width: 50%;
+    padding: 0.5rem 2rem 0.5rem 0rem;
+}
+.semestr-length{
+    margin-bottom: 2rem;
+    color: white;
+}
+.sem-disc{
+    color: white;
+}
+#semestr-disciplines{
+    width: 10.9rem;
+}
+.button-like-input{
+
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 1rem 1rem 0;
+    padding: 1rem 2rem 1rem 4rem;
+}
+.container-login{
+    margin-left: 30rem;
+    padding: 1.6rem;
+}
+.log-and-pass{
+    width: 20rem;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: flex;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.log-btn{
+    background-color: rgb(53, 78, 74);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20rem;
+}
+.logout-btn{
+    text-decoration: none;
+    font-size: 1.5rem;
+    background-color: unset;
+    border-radius: 3rem;
+    color: rgb(245, 248, 248);
+}
+.title-links .tooltippicture{
+    border-radius: 0.5rem;
+    visibility: hidden;
+    position:absolute;
+    top: -7rem;
+    right: -2rem;
+    opacity: 0;
+    transition: .5s;
+
+}
+
+.title-links:hover .tooltippicture{
+    visibility: visible;
+    opacity: 1;
+    top: 5rem;
+    right: 2rem;
+}
+#semestr-disciplines{
+    border-radius: 5px;
+}
+#sem-length{
+    border-radius: 5px;
+}

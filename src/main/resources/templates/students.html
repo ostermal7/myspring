@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link rel="stylesheet" th:href="@{css/style.css}" href="/static/css/style.css" type="text/css">
+    <script type="text/javascript" th:src="@{js/functions.js}" src="/static/js/functions.js"></script>
+</head>
+<body>
+<aside class="navigation">
+    <a th:href="@{/home}" class="navigation-item">На главную</a>
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <div class="student-buttons">
+        <div class="butt">
+            <input type="submit" class="colored" th:href="@{/students/student-progress}" onclick="gettingStudentProgress()" value="Успеваемость студента">
+            <!--
+            <form th:method="GET" th:action="@{/students/student-progress}" >
+            <button class="colored" th:onclick="gettingStudentProgress()" onclick="deleteStudent()">Успеваемость студента</button>
+            </form>
+            -->
+            <form th:method="GET" th:action="@{/students/student-creating}" >
+            <button class="colored">Создать нового студента...</button>
+            </form>
+        </div>
+        <div class="butt">
+            <input type="submit" class="colored" th:href="@{/students/student-modifying}" onclick="modifyingStudent()" value="Модифицировать выбранного студента">
+            <input type="submit" class="colored" th:onclick="deleteStudent()" onclick="deleteStudent()" value="Удалить выбранных студентов">
+            <form th:method="POST" th:action="@{/students}" id="deleteStudentForm">
+                <input type="hidden" id="deleteStudentHidden" name="deleteStudentHidden">
+            </form>
+        </div>
+    </div>
+
+    <h2 class="heading-secondary">Список студентов</h2>
+    <table class="student-table">
+        <tr>
+            <th></th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Группа</th>
+            <th>Дата поступления</th>
+        </tr>
+        <tr th:each="student : ${allStudents}">
+            <td><input type="checkbox" th:value="${student.getId()}"></td>
+            <td th:text="${student.getSername()}">Сидоров</td>
+            <td th:text="${student.getName()}">Сидр</td>
+            <td th:text="${student.getGroup()}">КТ-21</td>
+            <td th:text="${student.getDateofadmission()}">1/09/2011</td>
+        </tr>
+    </table>
+
+</main>
+
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+<form action="/students/student-modifying" method="get" id="modifyStudentForm">
+    <input type="hidden" id="modifyStudentHidden" name="modifyStudentHidden">
+</form>
+<form action="/students/student-progress" method="get" id="progressStudentForm">
+    <input type="hidden" id="progressStudentHidden" name="progressStudentHidden">
+</form>
+</body>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</html>

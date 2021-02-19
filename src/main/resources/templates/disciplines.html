@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disciplines</title>
+    <link rel="stylesheet" th:href="@{css/style.css}" href="/static/css/style.css" type="text/css">
+    <script type="text/javascript" th:src="@{js/functions.js}" src="/static/js/functions.js" ></script>
+</head>
+<body>
+<aside class="navigation">
+    <a th:href="@{/home}" class="navigation-item">На главную</a>
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <h2 class="heading-secondary">Список дициплин</h2>
+
+    <div class="container">
+        <table class="discipline-table" >
+            <tr>
+                <th></th>
+                <th class="table-font">Наименования дисциплин</th>
+            </tr>
+
+            <tr th:each="disc : ${allDisciplines}" >
+                <td><input type="checkbox" th:value="${disc.getId()}"></td>
+                <td class="table-font" th:text="${disc.getDisciplines()}">valuef</td>
+
+            </tr>
+
+        </table>
+        <div class="disc-buttons">
+            <a th:href="@{/disciplines/newDiscipline}" class="colored">Создать дисциплину</a>
+
+            <input type="submit" class="colored" th:href="@{/disciplines/discipline-modifying}" th:onclick="modifyingDiscipline()" value="Модифицировать выбранную дисциплину">
+
+            <input type="submit" class="colored" th:onclick="deleteDisciplines()" value="Удалить выбранную дисциплину">
+        </div>
+    </div>
+
+</main>
+
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+<form action="/disciplines" method="post" id="deleteDiscForm">
+    <input type="hidden" id="deleteDiscHidden" name="deleteDiscHidden">
+</form>
+<form action="/disciplines/discipline-modifying" method="get" id="modifyingDiscForm">
+    <input type="hidden" id="modifyingDiscHidden" name="modifyingDiscHidden">
+</form>
+</body>
+<form action="/student-modifying" method="get" id="modifyStudentForm">
+    <input type="hidden" id="modifyStudentHidden" name="modifyStudentHidden">
+</form>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</html>

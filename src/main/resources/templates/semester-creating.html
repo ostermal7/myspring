@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating Semester</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css" type="text/css">
+    <script type="text/javascript" th:src="@{/js/functions.js}" src="/static/js/functions.js"></script>
+</head>
+<body>
+<aside class="navigation">
+    <a th:href="@{/home}" class="navigation-item">На главную</a>
+    <a th:href="@{/semesters}" class="navigation-item">Назад</a>
+
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <h2 class="heading-secondary">Для создания семестра заполните следующие данные и нажмите кнопку "Создать".</h2>
+    <form th:method="POST" th:action="@{/semesters/newSemester}" th:object="${newSemester}">
+    <div class="semestr-length">
+        <label for="sem-length">Длительность в неделях</label>
+        <input type="text" id="sem-length" name="sem-duration" th:field="*{duration}">
+    </div>
+    <label for="semestr-disciplines" class="sem-disc">Дисциплины в семестре</label>
+    <select name="all-disciplines[]" id="semestr-disciplines" multiple>
+        <option th:each="disc : ${discList}"
+                th:value="${disc.getId()}"
+                th:text="${disc.getDisciplines()}"></option>
+    </select>
+        <input type="submit"  class="send-button" value="Создать">
+    </form>
+</main>
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</html>

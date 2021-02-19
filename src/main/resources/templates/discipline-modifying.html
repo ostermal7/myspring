@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Discipline Modifying</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css" type="text/css">
+    <script type="text/javascript" th:src="@{/js/functions.js}" src="/static/js/functions.js"></script>
+</head>
+<body>
+<aside class="navigation">
+    <a th:href="@{/home}" class="navigation-item">На главную</a>
+    <a th:href="@{/disciplines}" class="navigation-item">Назад</a>
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <h2 class="heading-secondary">Для того, чтобы модифицировать дисциплину, введите новое значение и нажмите "Применить":</h2>
+    <form th:method="POST" th:action="@{/disciplines/discipline-modifying}" th:object="${discForModifying}">
+        <input type="hidden" th:value="${discForModifying.getId()}" name="idDisc">
+    <div class="discipline-creation-window">
+        <label>Название</label>
+        <input type="text" id="disc-creation" th:field="*{disciplines}">
+    </div>
+    <input type="submit"  class="send-button" value="Применить">
+    </form>
+</main>
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+</body>
+</html>

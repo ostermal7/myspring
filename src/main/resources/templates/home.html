@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" th:href="@{css/style.css}" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+<aside class="navigation">
+    <!-- <a href="#" class="navigation-item">На главную</a>
+     <a href="#" class="navigation-item">Назад</a>
+     -->
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <div class="container">
+        <a class="title-links" th:href="@{/students}">Студенты<span class="tooltippicture"><img src="/static/img/students.jpg" th:src="@{/img/students.jpg}"  width="300" height="300"  alt="st"></span></a>
+        <a class="title-links" th:href="@{/disciplines}">Дисциплины<span class="tooltippicture"><img src="/static/img/disc-img.jpg" th:src="@{img/disc-img.jpg}"  width="300" height="300"  alt="dc"></span></a>
+        <a class="title-links" th:href="@{/semesters}">Семестры<span class="tooltippicture"><img src="/static/img/sem-pic.jpg" th:src="@{/img/sem-pic.jpg}" width="300" height="300"  alt="sm"></span></a>
+    </div>
+</main>
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+</body>
+</html>

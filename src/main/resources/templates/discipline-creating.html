@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Discipline Creating</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+<aside class="navigation">
+    <a href="" class="navigation-item">На главную</a>
+    <a href="#" class="navigation-item">Назад</a>
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <h2 class="heading-secondary">Для создания новой дисциплины заполните все поля и нажмите "Создать":</h2>
+    <form th:method="POST" th:action="@{/disciplines/newDiscipline}" th:object="${discipline}">
+    <div class="discipline-creation-window">
+        <label for="name">Название</label>
+        <input type="text" id="name" th:field="*{disciplines}">
+    </div>
+        <input type="submit"  class="send-button" value="Создать">
+    </form>
+    </form>
+</main>
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+</body>
+</html>

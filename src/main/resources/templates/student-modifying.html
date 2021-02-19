@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Modifying</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css" type="text/css">
+    <script type="text/javascript" th:src="@{/js/functions.js}" src="/static/js/functions.js"></script>
+</head>
+<body>
+<aside class="navigation">
+    <a th:href="@{/home}" class="navigation-item">На главную</a>
+    <a th:href="@{/students}" class="navigation-item">Назад</a>
+
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <h2 class="heading-secondary">Для модификации, введите новые значения и нажмите кнопку "Применить".</h2>
+    <form th:method="POST" th:action="@{/students/student-modifying}" th:object="${studentForModifying}">
+        <input type="hidden" th:value="${studentForModifying.getId()}" name="idStudent">
+        <div class="sername-window">
+        <label for="sername">Фамилия</label>
+        <input type="text" id="sername" th:field="*{sername}">
+    </div>
+    <div class="name-window">
+        <label for="name">Имя</label>
+        <input type="text" id="name" th:field="*{name}">
+    </div>
+    <div class="group-window">
+        <label for="group">Группа</label>
+        <input type="text" id="group" th:field="*{group}">
+    </div>
+    <div class="date-window">
+        <label for="date-ofadmission">Дата поступления</label>
+        <input type="text" id="date-ofadmission" th:field="*{dateofadmission}">
+    </div>
+        <input type="submit"  class="send-button" value="Применить">
+    </form>
+</main>
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+</body>
+</html>

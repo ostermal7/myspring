@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Semester modifying</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css" type="text/css">
+    <script type="text/javascript" th:src="@{/js/functions.js}" src="/static/js/functions.js"></script>
+</head>
+<aside class="navigation">
+    <a href="#" class="navigation-item">На главную</a>
+    <a href="#" class="navigation-item">Назад</a>
+
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <h2 class="heading-secondary">Для модификации семестра отредактируйте данные и нажмите "Применить".</h2>
+    <form th:method="POST" th:action="@{/semesters/modifyingSemester}" th:object="${semesterForModifying}">
+        <input type="hidden" name="modifySemesterIdHidden" th:value="${semesterForModifying.getId()}">
+    <div class="semestr-length">
+        <label for="sem-length" >Длительность в неделях</label>
+        <input type="text" id="sem-length" th:field="*{duration}">
+    </div>
+    <label for="semestr-disciplines" class="sem-disc">Дисциплины в семестре</label>
+        <select name="all-disciplines[]" id="semestr-disciplines" multiple>
+            <option th:each="disc : ${discList}"
+                    th:value="${disc.getId()}"
+                    th:text="${disc.getDisciplines()}"></option>
+        </select>
+        <div>
+            <input type="submit"  class="send-button" value="Применить">
+        </div>
+
+    </form>
+</main>
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Creating</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+<aside class="navigation">
+    <a href="#" class="navigation-item">На главную</a>
+    <a href="#" class="navigation-item">Назад</a>
+
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <h2 class="heading-secondary">Для создания студента заполните все поля и нажмите кнопку "Создать"</h2>
+    <form th:method="POST" th:action="@{/students/student-creating}" th:object="${student}">
+    <div class="sername-window">
+        <label for="sername">Фамилия</label>
+        <input type="text" th:field="*{sername}" id="sername">
+    </div>
+    <div class="name-window">
+        <label for="name">Имя</label>
+        <input type="text" id="name" th:field="*{name}">
+    </div>
+    <div class="group-window">
+        <label for="group">Группа</label>
+        <input type="text" id="group" th:field="*{group}">
+    </div>
+    <div class="date-window">
+        <label for="date-ofadmission">Дата поступления</label>
+        <input type="text" id="date-ofadmission" th:field="*{dateofadmission}">
+    </div>
+        <input type="submit"  class="send-button" value="Создать">
+    </form>
+</main>
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+</body>
+</html>

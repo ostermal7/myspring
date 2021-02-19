@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css" type="text/css">
+    <script type="text/javascript" th:src="@{/js/functions.js}" src="/static/js/functions.js"></script>
+</head>
+<body>
+<aside class="navigation">
+    <a th:href="@{/home}" class="navigation-item">На главную</a>
+    <a th:href="@{/students}" class="navigation-item">Назад</a>
+
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <h2 class="heading-secondary">Отображена успеваемость для следующего студента:</h2>
+    <table class="current-student" >
+        <input type="hidden" th:value="${progressStudent.getId()}" name="progressStudent">
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Группа</th>
+            <th>Дата поступления</th>
+        </tr>
+        <tr>
+            <td th:value="${progressStudent.getSername()}">Петров</td>
+            <td th:value="${progressStudent.getName()}">Петр</td>
+            <td th:value="${progressStudent.getGroup()}">КТ-21</td>
+            <td th:value="${progressStudent.getDateofadmission()}">1/09/2011</td>
+        </tr>
+    </table>
+    <div class="container">
+        <table class="progress-table" >
+            <tr>
+                <th>Дисциплина</th>
+                <th>Оценка</th>
+            </tr>
+            <tr th:each="discAndMark : ${studDiscAndMarks}">
+                <td th:text="${discAndMark.getDisciplines()}"></td>
+                <td th:text="${discAndMark.getMark()}"></td>
+            </tr>
+        </table>
+        <div>
+            <form th:method="POST" th:action="@{/students/student-progress}">
+            <label for="choose-sem" class="cursa">Выбрать семестр</label>
+            <select name="semesterForId" id="choose-sem">
+                <div th:each="sem : ${allSems}">
+                    <div th:if="${sem.getId()==selected}">
+                        <option th:value="${sem.getId()}"
+                                th:text="${sem.getName()}"
+                                th:name="deletingSemId"
+                                th:id="deletingSemId"
+                                th:selected="${sem.getId()==selected}"></option>
+                    </div>
+                    <div th:unless="${sem.getId()==selected}">
+                        <option th:value="${sem.getId()}"
+                                th:text="${sem.getName()}">
+                        </option>
+                    </div>
+
+                </div>
+            </select>
+                <input type="hidden" name="chooseStudIdHidden" th:value="${progressStudent.getId()}">
+            <button class="modif-btn">Выбрать</button>
+            </form>
+        </div>
+    </div>
+</main>
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Semester selection</title>
+    <link rel="stylesheet" th:href="@{css/style.css}" href="/static/css/style.css" type="text/css">
+    <script type="text/javascript" th:src="@{js/functions.js}" src="/static/js/functions.js"></script>
+</head>
+<body>
+
+</body><body>
+<aside class="navigation">
+    <a th:href="@{/home}" class="navigation-item">На главную</a>
+</aside>
+<main class="main">
+    <h1 class="main-heading">Система управления студентами и их успеваемостью</h1>
+    <form th:action="@{/semesters}" method="get" id="semIdForm">
+    <label for="choose-sem" class="cursa">Выбрать семестр</label>
+    <select name="semestrik" id="choose-sem">
+          <div th:each="sem : ${listOfSems}">
+              <div th:if="${sem.getId()==selected}">
+                  <option th:value="${sem.getId()}"
+                          th:text="${sem.getName()}"
+                          th:name="deletingSemId"
+                          th:id="deletingSemId"
+                          th:selected="${sem.getId()==selected}"></option>
+              </div>
+              <div th:unless="${sem.getId()==selected}">
+                  <option th:value="${sem.getId()}"
+                          th:text="${sem.getName()}">
+                  </option>
+              </div>
+          </div>
+
+    </select>
+    <button class="modif-btn">Выбрать</button>
+    </form>
+    <h2 class="heading-secondary">Список дисциплин семестра</h2>
+    <div class="container">
+        <table class="sem-selection-table">
+            <tr>
+                <th>Наименование дисциплины</th>
+            </tr>
+            <tr th:each="semDisc : ${disciplinesOfSemester}">
+                <td th:text="${semDisc.getDisciplines()}"></td>
+            </tr>
+        </table>
+        <div class="disc-buttons">
+
+            <form method="get" th:action="@{/semesters/newSemester}">
+                <button class="colored">Создать новый семестр</button>
+            </form>
+            <!--
+            <input type="submit" class="colored" onclick="getModifValue()" value="модифицировать">
+            <form th:method="GET" th:action="@{/semesters/modifyingSemester}" name="modifySemesterIdForm" id="modifySemesterIdForm">
+                <input type="hidden" name="modifySemesterIdHidden" id="modifySemesterIdHidden">
+
+            </form>
+            -->
+            <input type="submit" class="colored"  onclick="getModifValue()" value="Модифицировать текущий семестр">
+
+            <input type="submit" class="colored"  onclick="getValue()" value="Удалить выбранный семестр">
+            <form th:method="POST" th:action="@{/semesters}" id="deleteSemIdForm">
+                <input type="hidden" id="deleteSemIdHidden" name="deleteSemIdHidden">
+            </form>
+
+        </div>
+    </div>
+</main>
+<form action="/semesters/modifyingSemester" method="get" name="modifySemesterIdForm" id="modifySemesterIdForm">
+    <input type="hidden" name="modifySemesterIdHidden" id="modifySemesterIdHidden">
+</form>
+<aside class="logout">
+    <a href="#" class="logout-btn">Logout</a>
+</aside>
+
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</html>
