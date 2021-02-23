@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Semester selection</title>
@@ -45,25 +45,19 @@
                 <td th:text="${semDisc.getDisciplines()}"></td>
             </tr>
         </table>
+        <div sec:authorize="hasAuthority('ROLE_ADMIN')">
         <div class="disc-buttons">
 
             <form method="get" th:action="@{/semesters/newSemester}">
                 <button class="colored">Создать новый семестр</button>
             </form>
-            <!--
-            <input type="submit" class="colored" onclick="getModifValue()" value="модифицировать">
-            <form th:method="GET" th:action="@{/semesters/modifyingSemester}" name="modifySemesterIdForm" id="modifySemesterIdForm">
-                <input type="hidden" name="modifySemesterIdHidden" id="modifySemesterIdHidden">
-
-            </form>
-            -->
             <input type="submit" class="colored"  onclick="getModifValue()" value="Модифицировать текущий семестр">
 
             <input type="submit" class="colored"  onclick="getValue()" value="Удалить выбранный семестр">
             <form th:method="POST" th:action="@{/semesters}" id="deleteSemIdForm">
                 <input type="hidden" id="deleteSemIdHidden" name="deleteSemIdHidden">
             </form>
-
+        </div>
         </div>
     </div>
 </main>

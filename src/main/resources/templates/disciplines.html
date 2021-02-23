@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,12 +29,16 @@
             </tr>
 
         </table>
+        <div sec:authorize="hasAuthority('ROLE_ADMIN')">
         <div class="disc-buttons">
-            <a th:href="@{/disciplines/newDiscipline}" class="colored">Создать дисциплину</a>
+            <form th:action="@{/disciplines/newDiscipline}">
+                <button class="colored" th:href="@{/disciplines/newDiscipline}">Создать дисциплину</button>
+            </form>
 
             <input type="submit" class="colored" th:href="@{/disciplines/discipline-modifying}" th:onclick="modifyingDiscipline()" value="Модифицировать выбранную дисциплину">
 
             <input type="submit" class="colored" th:onclick="deleteDisciplines()" value="Удалить выбранную дисциплину">
+        </div>
         </div>
     </div>
 

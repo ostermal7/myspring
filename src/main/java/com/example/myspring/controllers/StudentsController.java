@@ -79,7 +79,6 @@ public class StudentsController {
         List<Semestr> allSems=daoManager.getAllActiveSemesters();
         model.addAttribute("allSems",allSems);
         String semId=request.getParameter("semesterForId");
-        System.out.println(semId+"sda");
         if (semId==null){
             semId=allSems.get(0).getId()+"";
         }

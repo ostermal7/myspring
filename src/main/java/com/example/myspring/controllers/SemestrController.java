@@ -40,7 +40,7 @@ public class SemestrController {
 
     @PostMapping()
     public String semesterPagePost(@RequestParam("deleteSemIdHidden") String id){
-        System.out.println(id);
+
         daoManager.deleteSemester(Integer.parseInt(id));
 
         return "redirect:/semesters";

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Students</title>
@@ -20,16 +20,20 @@
             <button class="colored" th:onclick="gettingStudentProgress()" onclick="deleteStudent()">Успеваемость студента</button>
             </form>
             -->
+            <div sec:authorize="hasAuthority('ROLE_ADMIN')">
             <form th:method="GET" th:action="@{/students/student-creating}" >
             <button class="colored">Создать нового студента...</button>
             </form>
+            </div>
         </div>
+        <div sec:authorize="hasAuthority('ROLE_ADMIN')">
         <div class="butt">
             <input type="submit" class="colored" th:href="@{/students/student-modifying}" onclick="modifyingStudent()" value="Модифицировать выбранного студента">
             <input type="submit" class="colored" th:onclick="deleteStudent()" onclick="deleteStudent()" value="Удалить выбранных студентов">
             <form th:method="POST" th:action="@{/students}" id="deleteStudentForm">
                 <input type="hidden" id="deleteStudentHidden" name="deleteStudentHidden">
             </form>
+        </div>
         </div>
     </div>
 

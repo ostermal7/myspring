@@ -29,7 +29,6 @@ public class DisciplineController {
     public String deleteDisc(@RequestParam("deleteDiscHidden") String ids){
         String[] idsStr=ids.split(",");
             for (String id: idsStr){
-                System.out.println(id);
                 daoManager.deleteDiscipline(Integer.parseInt(id));
             }
 

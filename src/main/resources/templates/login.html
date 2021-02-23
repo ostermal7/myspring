@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{css/style.css}" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+<main class="main">
+    <form method="post" th:action="@{/perform-login}" name="f">
+    <div class="container-login">
+        <div th:if="${param.error}" class="alert alert-error">
+            Неправильные имя и пароль.
+        </div>
+        <form action="/login" method="post">
+            <label for="user">Username</label>
+            <input type="text" class="log-and-pass" placeholder="Enter Username" name="user" id="user">
+
+            <label for="pass">Password</label>
+            <input type="password" class="log-and-pass" placeholder="Enter Password" name="pass" id="pass">
+
+            <button type="submit" class="log-btn">Login</button>
+        </form>
+    </div>
+    </form>
+</main>
+<div style="position: fixed; right: 20px; bottom: 0px;">
+    <p>Тестовые аккаунты: "admin / 123" , "student / 12345"</p>
+    <p>Аккаунт "admin" поддерживает обе роли</p>
+</div>
+</body>
+</html>
