@@ -17,6 +17,7 @@
     <div class="discipline-creation-window">
         <label for="name">Название</label>
         <input type="text" id="name" th:field="*{disciplines}">
+        <div style="color: red" th:if="${#fields.hasErrors('disciplines')}" th:errors="*{disciplines}">Discipline Error</div>
     </div>
         <input type="submit"  class="send-button" value="Создать">
     </form>

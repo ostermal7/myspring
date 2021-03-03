@@ -1,12 +1,17 @@
 package com.example.myspring.entity;
 
+import javax.validation.constraints.NotEmpty;
 import java.sql.Date;
 
 public class Student {
     private int id;
+    @NotEmpty(message = "Поле имя не может быть пустым")
     private String name;
+    @NotEmpty(message = "Поле фамилия не может быть пустым")
     private String sername;
+    @NotEmpty(message = "Поле группа не может быть пустым")
     private String group;
+    @NotEmpty(message = "Поле дата не может быть пустым")
     private Date dateofadmission;
     private boolean status=true;
 

@@ -28,7 +28,8 @@ public class WebConfig implements WebMvcConfigurer {
                                     "classpath:/static/js/");
 
     }
-
+//пример использования подключения к БД без properties
+    /*
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource= new DriverManagerDataSource();
@@ -45,4 +46,6 @@ public class WebConfig implements WebMvcConfigurer {
         return new JdbcTemplate(dataSource());
     }
 
+
+ */
 }

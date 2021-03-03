@@ -6,9 +6,11 @@ import com.example.myspring.entity.Semestr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,8 +57,11 @@ public class SemestrController {
     }
 
     @PostMapping("/newSemester")
-    public String createSemesterPost(@ModelAttribute("newSemester") Semestr semestr,
+    public String createSemesterPost(@ModelAttribute("newSemester") @Valid Semestr semestr,
+                                     BindingResult bindingResult,
                                      HttpServletRequest request){
+        if (bindingResult.hasErrors())
+            return "semester-creating";
         String[] discArrId=request.getParameterValues("all-disciplines[]");
         List<Semestr> newSemesterId=daoManager.gettingIdForNewSemester();
         int creatingId=(newSemesterId.get(newSemesterId.size()-1).getId()+1);
@@ -80,9 +85,12 @@ public class SemestrController {
     }
 
     @PostMapping("/modifyingSemester")
-    public String modifySem(@ModelAttribute("semesterForModifying")Semestr semestr,
+    public String modifySem(@ModelAttribute("semesterForModifying") @Valid Semestr semestr,
+                            BindingResult bindingResult,
                             @RequestParam("modifySemesterIdHidden") String id,
                             HttpServletRequest request){
+        if (bindingResult.hasErrors())
+            return "semester-modifying";
         String[] discArrId=request.getParameterValues("all-disciplines[]");
         daoManager.deleteOldDisciplines(Integer.parseInt(id));
         for (int i = 0; i <discArrId.length ; i++) {

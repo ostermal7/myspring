@@ -1,7 +1,10 @@
 package com.example.myspring.entity;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Semestr {
     private String name;
+    @NotEmpty(message = "Поле длительность не может быть пустым!")
     private String duration;
     private boolean status= true;
     private int id;
